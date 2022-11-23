@@ -1,11 +1,12 @@
 import * as axios from "axios";
 
-export const KubesharkWebsocketURL = process.env.REACT_APP_OVERRIDE_WS_URL ? process.env.REACT_APP_OVERRIDE_WS_URL :
-    window.location.protocol === 'https:' ? `wss://${window.location.host}/ws` : `ws://${window.location.host}/ws`;
+const hubHostPort = `${process.env.REACT_APP_HUB_HOST ? process.env.REACT_APP_HUB_HOST : "localhost"}:${process.env.REACT_APP_HUB_PORT ? process.env.REACT_APP_HUB_PORT : "8898"}`
+
+export const KubesharkWebsocketURL = window.location.protocol === 'https:' ? `wss://${hubHostPort}/ws` : `ws://${hubHostPort}/ws`;
 
 const CancelToken = axios.CancelToken;
 
-const apiURL = process.env.REACT_APP_OVERRIDE_API_URL ? process.env.REACT_APP_OVERRIDE_API_URL : `${window.location.origin}/`;
+const apiURL = window.location.protocol === 'https:' ? `https://${hubHostPort}/` : `http://${hubHostPort}/`;
 
 let client = null
 let source = null
