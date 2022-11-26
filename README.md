@@ -1,4 +1,4 @@
-# Kubeshark UI
+# Front
 
 The React app that serves as Kubeshark's front-end.
 
