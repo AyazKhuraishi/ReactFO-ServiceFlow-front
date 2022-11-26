@@ -27,9 +27,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo npm install -g eslint
-          cd ui
           npm i
+
       - name: Lint
         run: |
-          cd ui
           npm run eslint
